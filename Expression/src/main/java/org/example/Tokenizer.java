@@ -2,19 +2,28 @@ package org.example;
 import java.util.*;
 import java.util.regex.*;
 
+/**
+ * Класс для разбиения математического выражения на токены
+ */
 public class Tokenizer {
 
     private static final Pattern TOKEN_PATTERN = Pattern.compile(
-            "(\\d+\\.?\\d*|\\.\\d+)|" +
-                    "(\\+|-|\\*|/|\\^)|" +
-                    "(\\()|" +
-                    "(\\))|" +
-                    "(,)|" +
-                    "(sin|cos|tan|sqrt|log)|" +
-                    "([a-zA-Z_][a-zA-Z0-9_]*)|" +
-                    "(\\S)"
+                    "(\\d+\\.?\\d*|\\.\\d+)|" +    // Числа
+                    "(\\+|-|\\*|/|\\^)|" +         // Операторы
+                    "(\\()|" +                     // Левая скобка
+                    "(\\))|" +                     // Правая скобка
+                    "(,)|" +                       // Запятая
+                    "(sin|cos|tan|sqrt|log)|" +    // Функции
+                    "([a-zA-Z_][a-zA-Z0-9_]*)|" +  // Переменные
+                    "(\\S)"                        // Неизвестные символы
     );
 
+    /**
+     * Разбивает строку выражения на токены
+     * @param expression входное выражение
+     * @return список токенов
+     * @throws Exception при наличии некорректных символов
+     */
     public static List<Token> tokenize(String expression) throws Exception {
         List<Token> tokens = new ArrayList<>();
         Matcher matcher = TOKEN_PATTERN.matcher(expression);

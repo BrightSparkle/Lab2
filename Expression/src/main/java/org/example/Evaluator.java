@@ -1,8 +1,12 @@
 package org.example;
 import java.util.*;
 
+/**
+ * Класс для вычисления выражений в обратной польской нотации
+ */
 public class Evaluator {
 
+    /** Количество аргументов для функций */
     private static final Map<String, Integer> FUNCTION_ARGS = new HashMap<>();
     static {
         FUNCTION_ARGS.put("sin", 1);
@@ -11,6 +15,13 @@ public class Evaluator {
         FUNCTION_ARGS.put("log", 2);
     }
 
+    /**
+     * Вычисляет значение выражения в ОПН
+     * @param rpn выражение в обратной польской нотации
+     * @param variables словарь значений переменных
+     * @return результат вычисления
+     * @throws Exception при ошибках вычисления
+     */
     public static double evaluate(List<Token> rpn, Map<String, Double> variables) throws Exception {
         Deque<Double> stack = new LinkedList<>();
 
@@ -66,6 +77,13 @@ public class Evaluator {
         return stack.pop();
     }
 
+    /**
+     * Вычисляет значение математической функции
+     * @param name имя функции
+     * @param args список аргументов
+     * @return результат функции
+     * @throws Exception при неподдерживаемой функции или неверных аргументах
+     */
     private static double evaluateFunction(String name, List<Double> args) throws Exception {
         switch (name) {
             case "sin": return Math.sin(args.get(0));

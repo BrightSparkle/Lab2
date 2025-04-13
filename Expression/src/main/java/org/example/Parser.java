@@ -1,8 +1,12 @@
 package org.example;
 import java.util.*;
 
+/**
+ * Класс для синтаксического анализа и преобразования выражений
+ */
 public class Parser {
 
+    /** Количество аргументов для поддерживаемых функций */
     private static final Map<String, Integer> FUNCTION_ARGS = new HashMap<>();
     static {
         FUNCTION_ARGS.put("sin", 1);
@@ -11,6 +15,7 @@ public class Parser {
         FUNCTION_ARGS.put("log", 2);
     }
 
+    /** Приоритеты операторов */
     private static final Map<String, Integer> OPERATOR_PRECEDENCE = new HashMap<>();
     static {
         OPERATOR_PRECEDENCE.put("^", 4);
@@ -21,6 +26,11 @@ public class Parser {
         OPERATOR_PRECEDENCE.put("-", 2);
     }
 
+    /**
+     * Обрабатывает унарные операторы в списке токенов
+     * @param tokens исходный список токенов
+     * @return новый список токенов с обработанными унарными операторами
+     */
     public static List<Token> handleUnaryOperators(List<Token> tokens) {
         List<Token> processed = new ArrayList<>();
         Token prevToken = null;
@@ -40,6 +50,13 @@ public class Parser {
         return processed;
     }
 
+    /**
+     * Преобразует инфиксное выражение в обратную польскую нотацию (ОПН)
+     * используя алгоритм сортировочной станции
+     * @param tokens список токенов в инфиксной форме
+     * @return список токенов в постфиксной форме
+     * @throws Exception при ошибках в структуре выражения
+     */
     public static List<Token> shuntingYard(List<Token> tokens) throws Exception {
         List<Token> output = new ArrayList<>();
         Deque<Token> stack = new LinkedList<>();
@@ -116,6 +133,11 @@ public class Parser {
         return output;
     }
 
+    /**
+     * Собирает уникальные имена переменных из списка токенов
+     * @param tokens список токенов
+     * @return множество имен переменных
+     */
     public static Set<String> getVariables(List<Token> tokens) {
         Set<String> variables = new HashSet<>();
         for (Token token : tokens) {
@@ -126,6 +148,11 @@ public class Parser {
         return variables;
     }
 
+    /**
+     * Запрашивает значения переменных у пользователя
+     * @param variables множество имен переменных
+     * @return словарь со значениями переменных
+     */
     public static Map<String, Double> readVariables(Set<String> variables) {
         Map<String, Double> varMap = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
