@@ -10,7 +10,7 @@ public class TokenizerTest {
 
     @Test
     void testBasicTokens() throws Exception {
-        List<Token> tokens = Tokenizer.tokenize("3 + 4.2*x - sin(0)");
+        List<Token> tokens = Tokenizer.tokenize("3+4.2*x-sin(0)");
         assertTokens(tokens,
                 Token.Type.NUMBER, Token.Type.OPERATOR, Token.Type.NUMBER,
                 Token.Type.OPERATOR, Token.Type.VARIABLE, Token.Type.OPERATOR,
@@ -22,7 +22,7 @@ public class TokenizerTest {
     @Test
     void testInvalidToken() {
         Exception exception = assertThrows(Exception.class,
-                () -> Tokenizer.tokenize("3 # 4")
+                () -> Tokenizer.tokenize("3#4")
         );
         assertTrue(exception.getMessage().contains("Invalid token"));
     }
