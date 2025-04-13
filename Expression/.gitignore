@@ -1,25 +1,68 @@
+### Общие исключения ###
+*.class
+*.jar
+*.war
+*.ear
+*.tmp
+*.cache
+*.original
+*.versionsBackup
+*.classpath
+*.project
+*.factorypath
+*.swp
+*.swn
+*.swo
+*.bak
+*.rej
+*.DS_Store
+Thumbs.db
+.env
+.env.local
+.venv
+
+### Maven ###
 target/
-!.mvn/wrapper/maven-wrapper.jar
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.properties
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Gradle ###
+.gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+.idea/
 *.iws
 *.iml
 *.ipr
+out/
+.idea_modules/
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/datasources.xml
+.idea/dataSources.ids
+.idea/shelf/
 
 ### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
+.settings/
+.apt_generated/
 .springBeans
-.sts4-cache
+.sts4-cache/
+bin/
+tmp/
+.tmp/
 
 ### NetBeans ###
 /nbproject/private/
@@ -27,12 +70,49 @@ target/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
+*.code-workspace
 
-### Mac OS ###
+### Локальные настройки ###
+*.local
+*.local.*
+
+### Документация ###
+docs/_site/
+docs/.jekyll-cache/
+
+### Системные файлы ###
 .DS_Store
+Desktop.ini
+._*
+
+### Тестовые отчеты ###
+TEST*.xml
+surefire-reports/
+failsafe-reports/
+test-output/
+
+### Логи ###
+*.log
+logs/
+
+### Бинарные файлы ###
+*.exe
+*.dll
+*.so
+*.dylib
+
+### Архивы ###
+*.zip
+*.tar.gz
+*.7z
+
+### Прочее ###
+**/__pycache__/
+*.pyc
+*.db
+*.sqlite
+*.sublime-workspace
+*.sublime-project
